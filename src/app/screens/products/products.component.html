@@ -1,0 +1,18 @@
+<div class="products-page">
+    <h1>Products</h1>
+    <div class="separator"></div>
+    <select name="categories" class="category-filter" [value]="categoryText" (change)="categoryClick($event)">
+        <option disabled selected>Filter By category</option>
+        <option value="">All Products</option>
+        <option [value]="category?.slug" *ngFor="let category of categories$ | async">{{category?.name}}</option>
+    </select>
+    <h2 *ngIf="categoryText || searchText">Showing Results for {{categoryText || searchText}}</h2>
+    <div class="products" *ngIf="(products$ | async) as products"> 
+        <ng-container *ngIf="products?.products?.length > 0;else noResults">
+            <app-product-card *ngFor="let product of products?.products" [product]="product"></app-product-card>
+        </ng-container>
+        <ng-template #noResults>
+            <h2>No Results Found!</h2>
+        </ng-template>
+    </div>
+</div>

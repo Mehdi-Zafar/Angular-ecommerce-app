@@ -1,0 +1,9 @@
+<div class="card" [routerLink]="'/products/'+product?.id">
+    <div class="card-img"><img [src]="product?.thumbnail" [alt]="product?.title" loading="lazy"></div>
+    <div class="card-content">
+        <h4 class="title">{{product?.title}}</h4>
+        <h3 class="price">${{product?.price}}</h3>
+        <span class="category">{{product?.category}}</span>
+        <button class="btn" (click)="addToCart($event,product)" [disabled]="product?.stock === 0" [ngClass]="{'btn':true,'disabled-button':product?.stock === 0 }" [title]="product?.stock === 0 ? 'Out Of Stock':'Add to Cart'">Add to cart</button>
+    </div>
+</div>

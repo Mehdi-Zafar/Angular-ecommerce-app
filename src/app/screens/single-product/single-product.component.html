@@ -1,0 +1,40 @@
+<div *ngIf="product">
+<div class="product">
+    <div class="product-img">
+        <img [src]="currentImg || product?.images[0]" [alt]="product?.title">
+        <div class="image-btn-container">
+            <div [ngClass]="currentImg === image ? 'image-btn image-btn-selected':'image-btn'" *ngFor="let image of product?.images; index as i" (click)="changeImg(i)">
+                <img [src]="image" [alt]="product?.title">
+            </div>
+        </div>
+    </div>
+    <div class="product-info">
+        <h1 class="title">{{product?.title}}</h1>
+        <div class="tags">
+            <small class="category">{{product?.category}}</small>
+            <small class="category" [ngClass]="product?.stock > 0 ? 'in-stock':'out-of-stock'">{{[product?.stock > 0 ? 'In Stock':'Out of Stock']}}</small>
+        </div>
+        <p class="desc">{{product?.description}}</p>
+        <h4>Rating: {{product?.rating}}</h4>
+        <h4 class="price">${{product?.price}}</h4>
+        <div class="incrementor">
+            <button class="decrement-btn" (click)="decrementQuantity()" [disabled]="quantity === 1" [title]="quantity === 1 ? '':'Decrease quantity'">-</button>
+            <span class="quantity">{{quantity}}</span>
+            <button class="increment-btn" (click)="incrementQuantity()" [disabled]="quantity === product?.stock" [title]="quantity === product?.stock ? 'No More Stock!':'Increase quantity'">+</button>
+        </div>
+        <button (click)="addToCart(product)" [disabled]="product?.stock === 0" [ngClass]="{'btn':true,'disabled-button':product?.stock === 0 }" [title]="product?.stock === 0 ? 'Out Of Stock':'Add to Cart'">Add to cart</button>
+    </div>
+</div>
+<div class="reviews-comp">
+    <h2 class="reviews-heading">Reviews</h2>
+    <div class="reviews">
+        <app-review-card *ngFor="let review of product?.reviews" [review]="review"></app-review-card>
+    </div>
+</div>
+<div class="related-products">
+    <h2 class="reviews-heading">Related Products</h2>
+    <div class="products" *ngIf="(relatedProducts$ | async) as relatedProducts">
+        <app-product-card *ngFor="let product of filterProduct(relatedProducts?.products.slice(0,5))" [product]="product"></app-product-card>
+    </div>
+</div>
+</div>

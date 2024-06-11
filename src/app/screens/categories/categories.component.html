@@ -1,0 +1,11 @@
+<div class="categories-page">
+    <h1>Categories</h1>
+    <div class="separator"></div>
+    <div class="categories" *ngIf="(categories$ | async) as categories"> 
+        <!-- <app-product-card *ngFor="let product of products?.products" [product]="product"></app-product-card> -->
+        {{categories | json}}
+        <!-- <div *ngFor="let category of categories">
+            <h2>{{category?.name}}</h2>
+        </div> -->
+    </div>
+</div>

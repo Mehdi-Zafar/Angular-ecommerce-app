@@ -1,0 +1,17 @@
+<div class="sign-in-form">
+    <h1 class="form-title">Sign In</h1>
+    <form class="form" (submit)="loginUser()">
+        <div class="form-field">
+            <label for="username-sign-in">Username</label>
+            <input type="text" id="username-sign-in" name="username" [(ngModel)]="username">
+        </div>
+        <div class="form-field">
+            <label for="password-sign-in">Password</label>
+            <input type="text" id="password-sign-in" name="password" [(ngModel)]="password">
+        </div>
+        <div class="form-btn">
+            <button>Sign In</button>
+        </div>
+        <small class="mini-text">Create an Account? <a routerLink="/sign-up">Sign Up</a></small>
+    </form>
+</div>

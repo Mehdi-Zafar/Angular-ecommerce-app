@@ -1,0 +1,19 @@
+.profile-page{
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+button{
+    background-color: var(--primary-color);
+    padding: 12px 10px;
+    width: 200px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}

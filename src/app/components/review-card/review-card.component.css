@@ -1,0 +1,28 @@
+.review-card{
+    border: 1px solid var(--light-color);
+    box-shadow:0.5px 0.5px 20px var(--light-color);
+    width: 350px;
+    padding: 25px;
+    border-radius: 5px;
+}
+
+.review-heading{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar{
+    background-color: var(--light-color);
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.review-comment{
+    margin-top: 5px;
+}
+
+.rating{
+    margin: 5px 0;
+    letter-spacing: 0.03rem;
+}

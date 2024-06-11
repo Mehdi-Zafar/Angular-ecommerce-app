@@ -1,0 +1,54 @@
+<div class="cart-overlay">
+    <div class="cart">
+        <div class="cart-header">
+            <h1>Cart</h1>
+            <svg (click)="closeCart()" class="close-btn" fill="#000000" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 1792 1792" xml:space="preserve">
+<path d="M1082.2,896.6l410.2-410c51.5-51.5,51.5-134.6,0-186.1s-134.6-51.5-186.1,0l-410.2,410L486,300.4
+	c-51.5-51.5-134.6-51.5-186.1,0s-51.5,134.6,0,186.1l410.2,410l-410.2,410c-51.5,51.5-51.5,134.6,0,186.1
+	c51.6,51.5,135,51.5,186.1,0l410.2-410l410.2,410c51.5,51.5,134.6,51.5,186.1,0c51.1-51.5,51.1-134.6-0.5-186.2L1082.2,896.6z"/>
+</svg>
+        </div>
+        <div class="cart-products">
+            <div *ngIf="cart.length>0;else empty">
+                <div class="cart-item" *ngFor="let item of cart">
+                    <div class="item-img"><img [src]="item.img" [alt]="item.title"></div>
+                    <div class="item-info">
+                        <h3>{{item.title}}</h3>
+                        <div class="info-bottom-row">
+                            <div class="incrementor">
+                                <button class="increment-btn" *ngIf="item.quantity > 1; else delete" (click)="decrementQuantity(item.id)">-</button>
+                                <ng-template #delete>
+                                    <button class="delete-btn" (click)="deleteItem(item.id)">
+                                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10 11V17" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M14 11V17" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M4 7H20" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                    </button>
+                                </ng-template>
+                                <span>{{item.quantity}}</span>
+                                <button class="increment-btn" (click)="incrementQuantity(item.id)">+</button>
+                            </div>
+                            <h5 class="info-price">${{item.price}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #empty>
+                <div class="empty-cart">
+                    <h3>Cart is Empty</h3>
+                </div>
+            </ng-template>
+        </div>
+        <div class="cart-footer" *ngIf="cart.length>0">
+            <h3 class="total"><span>Total</span> ${{totalPrice()}}</h3>
+            <div class="btn-row">
+                <button class="solid" (click)="goToCheckout()">Checkout</button>
+                <button class="outline" (click)="clearCart()">Clear</button>
+            </div>
+        </div>
+    </div>
+</div>

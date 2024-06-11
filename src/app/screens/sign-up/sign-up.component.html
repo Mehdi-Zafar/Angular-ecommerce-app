@@ -1,0 +1,30 @@
+<div class="sign-in-form">
+    <h1 class="form-title">Sign Up</h1>
+    <form class="form" (submit)="registerUser()">
+        <div class="form-field">
+            <label for="username-sign-up">Username</label>
+            <input type="text" id="username-sign-up" name="username" [(ngModel)]="username">
+        </div>
+        <div class="form-field">
+            <label for="email-sign-up">Email</label>
+            <input type="email" id="email-sign-up" name="email" [(ngModel)]="email">
+        </div>
+        <div class="form-field">
+            <label for="password-sign-up">Password</label>
+            <input type="password" id="password-sign-up" name="password" [(ngModel)]="password">
+        </div>
+        <div class="form-field">
+            <label for="confirmPassword-sign-up">Confirm Password</label>
+            <input type="password" id="confirmPassword-sign-up" name="confirmPassword" [(ngModel)]="confirmPassword">
+        </div>
+        <div class="form-field">
+            <label for="contactNumber-sign-up">Contact Number</label>
+            <input type="number" id="contactNumber-sign-up" name="contactNumber" [(ngModel)]="contactNumber">
+        </div>
+        <div class="form-btn">
+            <button>Sign Up</button>
+        </div>
+        <small class="mini-text">Already have an account? <a routerLink="/sign-in">Sign In</a></small>
+    </form>
+</div>
+<!-- <div>{{username+' '+email+' '+password+' '+confirmPassword}}</div> -->

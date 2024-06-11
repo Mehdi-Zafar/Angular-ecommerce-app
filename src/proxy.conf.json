@@ -1,0 +1,6 @@
+{
+    "/products/**": {
+      "target": "https://dummyjson.com",
+      "secure": false
+    }
+  }
